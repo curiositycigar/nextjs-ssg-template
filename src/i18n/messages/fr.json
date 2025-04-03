@@ -1,0 +1,20 @@
+{
+  "HomePage": {
+    "helloWorld": "Bonjour tout le monde !"
+  },
+  "AboutPage": {
+    "aboutText": "Ceci est un site statique complètement traduit."
+  },
+  "Header": {
+    "home": "Accueil",
+    "about": "A propos"
+  },
+  "LocaleSwitcher": {
+    "languageMap": {
+      "en": "English",
+      "fr": "Français",
+      "zh": "中文"
+    },
+    "currentLocale": "Langue actuelle"
+  }
+}
