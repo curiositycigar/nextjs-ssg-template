@@ -11,10 +11,11 @@ import { Metadata } from 'next';
  *
  * Nginx configuration example:
  * location = / {
- *   rewrite ^/$ /en permanent;
+ *   return 301 /en;
  * }
  */
 export const metadata: Metadata = {
+  metadataBase: process.env.NEXT_PUBLIC_BASE_URL ? new URL(process.env.NEXT_PUBLIC_BASE_URL) : null,
   title: 'Z Medical - Leading Healthcare Solutions',
   description: 'Z Medical provides innovative healthcare solutions and medical services. Discover how we can help improve your healthcare experience.',
   alternates: {
