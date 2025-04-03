@@ -39,17 +39,29 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = getAllRoutes();
+  const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  return routes.map(route => ({
-    url: `${BASE_URL}${route}`,
-    lastModified: new Date(),
-    alternates: {
-      languages: Object.fromEntries(
-        SUPPORTED_LOCALES.map(locale => [
-          locale,
-          `${BASE_URL}/${locale}${route}`
-        ])
-      )
+  // Generate entries for each route and locale combination
+  for (const route of routes) {
+    for (const locale of SUPPORTED_LOCALES) {
+      sitemapEntries.push({
+        url: `${BASE_URL}/${locale}${route}`,
+        lastModified: new Date(),
+        alternates: {
+          languages: Object.fromEntries(
+            // SUPPORTED_LOCALES.filter(l => l !== locale).map(altLocale => [
+            //   altLocale,
+            //   `${BASE_URL}/${altLocale}${route}`
+            // ])
+            SUPPORTED_LOCALES.map(altLocale => [
+              altLocale,
+              `${BASE_URL}/${altLocale}${route}`
+            ])
+          )
+        }
+      });
     }
-  }));
+  }
+
+  return sitemapEntries;
 }
