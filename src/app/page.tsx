@@ -14,9 +14,9 @@ import { routing } from '@/i18n/routing';
  * }
  */
 export default function RootPage() {
-  const locale = navigator.language.split('-')[0];
+  const locale = navigator.language.split('-')[0] as typeof supportedLocales[number];
   const supportedLocales = routing.locales;
-  if (supportedLocales.includes(locale as typeof supportedLocales[number])) {
+  if (supportedLocales.includes(locale)) {
     redirect({
       href: '/',
       locale,

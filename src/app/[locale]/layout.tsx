@@ -37,7 +37,7 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale}>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlClientProvider locale={locale as typeof routing.locales[number]} messages={messages}>
         <body className="bg-gray-100">
           <Header />
           <LocaleSwitcher />
