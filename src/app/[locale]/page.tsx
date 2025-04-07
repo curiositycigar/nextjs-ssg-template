@@ -16,9 +16,12 @@ export async function generateMetadata(
     description: 'Z Medical provides innovative healthcare solutions and medical services. Discover how we can help improve your healthcare experience.',
     alternates: {
       canonical: `/${locale}`,
-      languages: Object.fromEntries(
-        routing.locales.map(locale => [locale, `/${locale}`])
-      ),
+      languages: {
+        'x-default': `/${routing.defaultLocale}`,
+        ...Object.fromEntries(
+          routing.locales.map(locale => [locale, `/${locale}`])
+        ),
+      },
     },
     openGraph: {
       title: 'Z Medical - Leading Healthcare Solutions',
